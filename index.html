@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="manifest" href="assets/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app" class="app">
+      <main>
+        <div class="input" :style="{ background: color, boxShadow: shadow }">
+          <input ref="title" class="input__title" type="text" placeholder="Title" spellcheck="false" v-model="title" />
+          <textarea
+            ref="text"
+            class="input__text"
+            type="text"
+            name="text"
+            placeholder="Enter note..."
+            spellcheck="false"
+            rows="6"
+            v-model="text"
+          ></textarea>
+          <div class="input__controls">
+            <button @click="add" class="input__controls__add" title="Add Note">
+              <i class="fas fa-plus fa-2x"></i>
+            </button>
+            <div class="input__controls__color">
+              <button @click="showColors = !showColors" class="input__controls__color__button" title="Change Color">
+                <i class="fas fa-palette fa-2x"></i>
+              </button>
+              <div class="input__color-palette" v-if="showColors">
+                <button v-for="(color, i) in colors" :key="i" class="input__color-palette-select" @click="setColor(color)" :style="{ background: color.background }"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <transition-group tag="ul" ref="list" class="notes">
+          <li v-for="(note, i) in notes" v-bind:key="i" :id="note.id" class="note" :style="{ background: note.color, boxShadow: note.shadow }">
+            <article>
+              <header class="note__title">{{ note.title }}</header>
+              <p class="note__text">{{ note.text }}</p>
+              <div class="note__controls">
+                <button @click="del(note.id)" class="note__controls__delete" title="Delete Note">
+                  <i class="fas fa-trash fa-2x"></i>
+                </button>
+              </div>
+            </article>
+          </li>
+        </transition-group>
+      </main>
+      <div id="global-ui">
+        <div id="service-worker" v-if="updateAvailable" class="service-worker">
+          <p class="service-worker__text">Update available!</p>
+          <button @click="update" class="service-worker__control">Update</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

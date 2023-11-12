@@ -1,0 +1,183 @@
+body, main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    background: #fafad2;
+  }
+  .app {}
+  
+  .input {
+    background: #fff740;
+    border-radius: 0.35rem;
+    box-shadow: 1px 1px 4px 1px #bfb700;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  .input__title {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    outline: unset;
+    display: block;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .input__text {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    outline: unset;
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+  }
+  .input__controls {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+  }
+  .input__controls__add {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    cursor: pointer;
+  }
+  
+  .input__controls__color {
+    position: relative;
+  }
+  
+  .input__controls__color__button {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    cursor: pointer;
+  }
+  
+  .input__color-palette {
+    position: absolute;
+    right: 2.5rem;
+    bottom: 0px;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+  }
+  
+  .input__color-palette-select {
+    width: 1.6rem;
+    height: 1.6rem;
+    border: none;
+    cursor: pointer;
+    border-left: 1px solid black;
+  }
+  
+  .input__color-palette-select:first-child {
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+  .input__color-palette-select:last-child {
+    border-radius: 0.5rem 0 0 0.5rem;
+    border-left: unset;
+  }
+  
+  .notes {
+    padding-left: unset;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 2rem;
+  }
+  .note {
+    flex: 0 1 calc(33.3% - 4rem); /* Remove margin of list (left, right) */
+    height: fit-content;
+    background: #fff740;
+    border-radius: 0.35rem;
+    box-shadow: 1px 1px 4px 1px #bfb700;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .note__title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .note__text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+  }
+  .note__controls {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+  }
+  .note__controls__delete {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    cursor: pointer;
+  }
+  .service-worker {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    background: #fff740;
+    box-shadow: 1px 1px 3px 1px #bfb700;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem 1.2rem;
+  }
+  .service-worker__text {
+    margin-bottom: 0.5rem;
+  }
+  .service-worker__control {
+    appearance: unset;
+    background: gray;
+    box-shadow: 1px 1px 2px 1px darkgray;
+    border: unset;
+    display: block;
+    margin: auto;
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1280px) {
+    .note {
+      flex: 0 1 calc(50% - 4rem);
+    }
+  }
+  @media screen and (max-width: 760px) {
+    .input {
+      max-width: unset;
+      margin: 2rem 3rem 3rem;
+    }
+    
+    .note {
+      flex: 0 1 calc(100% - 4rem);
+    }
+  }
+  .v-enter-active {
+    animation-name: slide;
+    animation-duration: 200ms;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-direction: normal;
+  }
+  @keyframes slide {
+    from {
+      transform: translateX(100vw);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
